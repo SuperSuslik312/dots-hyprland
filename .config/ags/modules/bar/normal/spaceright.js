@@ -42,16 +42,16 @@ export default (monitor = 0) => {
     const SpaceRightDefaultClicks = (child) => Widget.EventBox({
         onHover: () => {
             barStatusIcons.toggleClassName('bar-statusicons-hover', true);
-            if (userOptions.appearance.onHoverTray.enabled == true) {
+            if (userOptions.asyncGet().appearance.onHoverTray.enabled == true) {
                 barTray.children[0].revealChild = true;
             }
         },
         onHoverLost: () => {
             barStatusIcons.toggleClassName('bar-statusicons-hover', false);
-            if (userOptions.appearance.onHoverTray.enabled == true) {
+            if (userOptions.asyncGet().appearance.onHoverTray.enabled == true) {
                 setTimeout(() => {
                     barTray.children[0].revealChild = false;
-                }, userOptions.appearance.onHoverTray.delay)
+                }, userOptions.asyncGet().appearance.onHoverTray.delay)
             }
         },
         onPrimaryClick: () => App.toggleWindow('sideright'),

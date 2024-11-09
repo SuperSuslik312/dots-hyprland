@@ -119,7 +119,7 @@ class GPTService extends Service {
         });
     }
 
-    _assistantPrompt = true;
+    _assistantPrompt = userOptions.asyncGet().ai.enhancements;
     _currentProvider = '';
     _requestCount = 0;
     _temperature = -1;
@@ -244,6 +244,7 @@ class GPTService extends Service {
             temperature: this._temperature,
             // temperature: 2, // <- Nuts
             stream: true,
+            provider: PROVIDERS.asyncGet()[this._currentProvider]['provider'],
         };
         const proxyResolver = new Gio.SimpleProxyResolver({ 'default-proxy': userOptions.asyncGet().ai.proxyUrl });
         const session = new Soup.Session({ 'proxy-resolver': proxyResolver });

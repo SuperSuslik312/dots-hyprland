@@ -69,64 +69,28 @@ const UtilButton = ({ name, icon, onClicked }) => Button({
     label: `${icon}`,
 })
 
-const Utilities = () => {
-    let unsubscriber = () => {};
-    let wallpaperFolder = '';
-    let status = true;
-
-    const change_wallpaper_btn = UtilButton({
-        name: getString('Change wallpaper randomly'), icon: 'image', onClicked: (async () => {
-            try {
-                const bgFolder = wallpaperFolder;
-                if (!bgFolder) { return; }
-                const bgFiles = (await Utils.execAsync (`find ${bgFolder} -type f -iname '*.png' -o -iname '*.jpg'`)).split('\n');
-                const bgFile = bgFiles[Math.floor (Math.random() * (bgFiles.length - 1))];
-                await Utils.execAsync (`sh ${Utils.HOME}/.config/ags/scripts/color_generation/switchwall.sh ${bgFile}`);
+const Utilities = () => Box({
+    hpack: 'center',
+    className: 'spacing-h-4',
+    children: [
+        UtilButton({
+            name: getString('Screen snip'), icon: 'screenshot_region', onClicked: () => {
+                Utils.execAsync(`${App.configDir}/scripts/grimblast.sh copy area`)
+                    .catch(print)
             }
-            catch (e) { console.error(e); }
-        })
-    });
-
-    const box = Box({
-        hpack: 'center',
-        className: 'spacing-h-4',
-        children: [
-            UtilButton({
-                name: getString('Screen snip'), icon: 'screenshot_region', onClicked: () => {
-                    Utils.execAsync(`${App.configDir}/scripts/grimblast.sh copy area`)
-                        .catch(print)
-                }
-            }),
-            UtilButton({
-                name: getString('Color picker'), icon: 'colorize', onClicked: () => {
-                    Utils.execAsync(['hyprpicker', '-a']).catch(print)
-                }
-            }),
-            UtilButton({
-                name: getString('Toggle on-screen keyboard'), icon: 'keyboard', onClicked: () => {
-                    toggleWindowOnAllMonitors('osk');
-                }
-            }),
-            change_wallpaper_btn
-        ]
-    });
-    unsubscriber = userOptions.subscribe ((userOptions) => {
-        wallpaperFolder = userOptions.bar.wallpaper_folder;
-        const current_status = typeof wallpaperFolder == 'string';
-        if (status != current_status) {
-            if (current_status) {
-                box.add(change_wallpaper_btn);
+        }),
+        UtilButton({
+            name: getString('Color picker'), icon: 'colorize', onClicked: () => {
+                Utils.execAsync(['hyprpicker', '-a']).catch(print)
             }
-            else {
-                box.remove (change_wallpaper_btn);
+        }),
+        UtilButton({
+            name: getString('Toggle on-screen keyboard'), icon: 'keyboard', onClicked: () => {
+                toggleWindowOnAllMonitors('osk');
             }
-
-            status = current_status;
-        }
-    });
-    box.on('destroy', () => { unsubscriber (); });
-    return box;
-}
+        }),
+    ]
+})
 
 const BarBattery = () => Box({
     className: 'spacing-h-4 bar-batt-txt',

@@ -100,7 +100,8 @@ const configOptions = {
         'ai': {
             '__custom': ['extraGptModels'],
             'extraGptModels': {},
-            'initMessages': []
+            'initMessages': [],
+            'gemini_instructions': null
         },
         'image': {
             'columns': 2,

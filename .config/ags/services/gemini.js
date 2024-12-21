@@ -147,6 +147,7 @@ class GeminiService extends Service {
 
         // if (this._usingHistory) Utils.timeout(1000, () => this.loadHistory());
         if (this._usingHistory) this.loadHistory();
+        else this._messages = [];
 
         this.emit('initialized');
     }
@@ -212,9 +213,13 @@ class GeminiService extends Service {
             //     this.emit('newMsg', index);
             // }
         }
+        else {
+            this._messages = []
+        }
     }
 
     clear() {
+        this._messages = [];
         if (this._usingHistory) this.saveHistory();
         this.emit('clear');
     }

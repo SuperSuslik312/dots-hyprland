@@ -261,7 +261,8 @@ const configOptions = {
 }
 
 // Override defaults with user's options
-function overrideConfigRecursive(userOverrides, configOptions = {}) {
+let optionsOkay = true;
+function overrideConfigRecursive(userOverrides, configOptions = {}, check = true) {
     for (const [key, value] of Object.entries(userOverrides)) {
         if ((configOptions[key] === undefined && check) || key == '__custom') {
             optionsOkay = false;
@@ -271,7 +272,7 @@ function overrideConfigRecursive(userOverrides, configOptions = {}) {
                 configOptions['__custom'].indexOf(key) >= 0) {
                 configOptions[key] = value;
             } else {
-                overrideConfigRecursive(value, configOptions[key]);
+                overrideConfigRecursive(value, configOptions[key], check);
             }
         } else {
             configOptions[key] = value;

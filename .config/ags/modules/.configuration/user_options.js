@@ -33,7 +33,7 @@ const configOptions = {
         'layerSmoke': false,
         'layerSmokeStrength': 0.2,
         'barRoundCorners': 1, // 0: No, 1: Yes
-        'fakeScreenRounding': 1, // 0: None | 1: Always | 2: When not fullscreen
+        'fakeScreenRounding': 2, // 0: None | 1: Always | 2: When not fullscreen
         'onHoverTray': { // Appears the tray only on mouse hover
             'enabled': false,
             'delay': 5000, // Delay, in milliseconds, before the tray disappears again
@@ -261,8 +261,7 @@ const configOptions = {
 }
 
 // Override defaults with user's options
-let optionsOkay = true;
-function overrideConfigRecursive(userOverrides, configOptions = {}, check = true) {
+function overrideConfigRecursive(userOverrides, configOptions = {}) {
     for (const [key, value] of Object.entries(userOverrides)) {
         if ((configOptions[key] === undefined && check) || key == '__custom') {
             optionsOkay = false;
@@ -272,7 +271,7 @@ function overrideConfigRecursive(userOverrides, configOptions = {}, check = true
                 configOptions['__custom'].indexOf(key) >= 0) {
                 configOptions[key] = value;
             } else {
-                overrideConfigRecursive(value, configOptions[key], check);
+                overrideConfigRecursive(value, configOptions[key]);
             }
         } else {
             configOptions[key] = value;

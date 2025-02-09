@@ -137,7 +137,7 @@ const timeRow = Box({
 const togglesBox = Widget.Box({
     hpack: 'center',
     className: 'sidebar-togglesbox spacing-h-5',
-    children: userOptions.sidebar.quickToggles.order.map(toggle => QUICK_TOGGLES[toggle])
+    children: userOptions.asyncGet().sidebar.quickToggles.order.map(toggle => QUICK_TOGGLES[toggle])
 })
 
 export const sidebarOptionsStack = ExpandingIconTabContainer({

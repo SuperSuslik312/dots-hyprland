@@ -120,6 +120,9 @@ const configOptions = {
             'from': 'auto',
             'to': 'en',
             'languages': {}
+        },
+        'quickToggles': {
+            'order': ["wifi", "bluetooth", "nightlight", "gamemode", "idleinhibitor", "cloudflarewarp"],
         }
     },
     'search': {

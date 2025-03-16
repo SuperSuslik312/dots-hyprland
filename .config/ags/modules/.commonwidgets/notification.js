@@ -192,7 +192,7 @@ export default ({
             justify: Gtk.Justification.LEFT,
             maxWidthChars: 1,
             truncate: 'end',
-            label: processNotificationBody(notifObject.body, notifObject.appEntry).split("\n")[0]
+            label: processNotificationBody(notifObject.body, notifObject.appEntry).split("\n")[0],
             wrapMode: Pango.WrapMode.WORD_CHAR,
         }),
     });

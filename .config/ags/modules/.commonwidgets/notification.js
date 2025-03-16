@@ -212,7 +212,7 @@ export default ({
                     justify: Gtk.Justification.LEFT,
                     maxWidthChars: 1,
                     wrap: true,
-                    label: processNotificationBody(notifObject.body, notifObject.appEntry)
+                    label: processNotificationBody(notifObject.body, notifObject.appEntry),
                     wrapMode: Pango.WrapMode.WORD_CHAR,
                 }),
                 Box({

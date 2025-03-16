@@ -123,7 +123,10 @@ const configOptions = {
         },
         'quickToggles': {
             'order': ["wifi", "bluetooth", "nightlight", "gamemode", "idleinhibitor", "cloudflarewarp"],
-        }
+        },
+        'calendar': {
+            'expandByDefault': true,
+        },
     },
     'search': {
         'watchers': [
@@ -151,6 +154,7 @@ const configOptions = {
         'dateFormatLong': "%A, %d/%m", // On bar
         'dateInterval': 5000,
         'dateFormat': "%d/%m", // On notif time
+        'calendarDateFormat': "%d %B %Y"
     },
     'weather': {
         'city': "",

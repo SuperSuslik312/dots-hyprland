@@ -60,7 +60,7 @@ const APILIST = {
         contentWidget: booruView,
         commandBar: booruCommands,
         tabIcon: booruTabIcon,
-        placeholderText: getString('Enter tags'),
+        placeholderText: getString('Enter tags and/or page number'),
     },
 }
 

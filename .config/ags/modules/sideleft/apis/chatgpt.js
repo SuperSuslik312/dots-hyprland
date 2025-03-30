@@ -179,7 +179,7 @@ const GPTSettings = () => MarginRevealer({
                     { value: 0.50, name: getString('Balanced'), },
                     { value: 1.00, name: getString('Creative'), },
                 ],
-                initIndex: 2,
+                initIndex: 1,
                 onChange: (value, name) => {
                     GPTService.temperature = value;
                 },
@@ -192,7 +192,7 @@ const GPTSettings = () => MarginRevealer({
                 children: [
                     ConfigToggle({
                         icon: 'model_training',
-                        name: getString('Enhancements'),
+                        name: getString('Prompt'),
                         desc: getString('Tells the model:\n- It\'s a Linux sidebar assistant\n- Be brief and use bullet points'),
                         initValue: GPTService.assistantPrompt,
                         onChange: (self, newValue) => {

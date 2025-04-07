@@ -43,7 +43,11 @@
         "layerSmoke": false,
         "layerSmokeStrength": 0.2,
         "barRoundCorners": 1, // 0: No, 1: Yes
-        "fakeScreenRounding": 2 // 0: None | 1: Always | 2: When not fullscreen
+        "fakeScreenRounding": 2, // 0: None | 1: Always | 2: When not fullscreen
+        "onHoverTray": { // Appears the tray only on mouse hover
+            "enabled": false,
+            "delay": 5000 // Delay, in milliseconds, before the tray disappears again
+        }
     },
     "apps": {
         "bluetooth": "blueberry",
@@ -190,7 +194,19 @@
         "preferredUnit": "C" // Either C or F
     },
     "workspaces": {
-        "shown": 10
+        "shown": 10,
+        "labels": {
+            "1": "一",
+            "2": "二",
+            "3": "三",
+            "4": "四",
+            "5": "五",
+            "6": "六",
+            "7": "七",
+            "8": "八",
+            "9": "九",
+            "10": "十"
+        }
     },
     "dock": {
         "enabled": false,
